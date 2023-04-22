@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Roboto:wght@300;400&display=swap');
+
+:root {
+    --n-america: #4C824B; /* dark green */
+    --s-america: #6AC486; /* light green */
+    --europe: #FFD435; /* yellow */
+    --africa: #5575C1; /* blue */
+    --asian: #D04E5B; /* red */
+    --ociania: #A652BA; /* purple */
+    --default: #8c8c8c; /* gray */
+    --background: #f9f9f9; /* light gray */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    /*font-weight: lighter;*/
+}
+
+h1 {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 3rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container {
+    width: 80vw;
+}
+
+img {
+    width: 100%;
+}
+
+.countries {
+    width: 80vw;
+    min-height: 100px;
+    background-color: var(--background); /* light gray */
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    padding-top: 20px;
+}
+
+.countries-list {
+    height: 4300px; /* de hoogte zou eigenlijk automatisch bepaald moeten worden maar dat heb ik niet voor elkaar gewkregen */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-right: -30px;
+}
+
+.countryBox {
+    width: 33%;
+    height: 41px;
+}
+
+.country {
+    margin-top: -10px;
+}
+
+.population {
+    font-size: 0.7rem;
+    margin-top: -15px;
+}
+
+ul {
+    list-style: none;
+}
+
+.n-america {
+    color: var(--n-america); /* dark green */
+}
+
+.s-america {
+    color: var(--s-america); /* red */
+}
+
+.europe {
+    color: var(--europe); /* yellow */
+}
+
+.africa {
+    color: var(--africa); /* blue */
+}
+
+.asia {
+    color: var(--asian); /* red */
+}
+
+.oceania {
+    color: var(--ociania); /* purple */
+
+}
+
+.default {
+    color: var(--default); /* grey */
+}
+

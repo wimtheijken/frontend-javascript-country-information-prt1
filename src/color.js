@@ -15,53 +15,52 @@ import axios from "axios";
 
 const countryList = document.getElementById('countries-list')
 const errorMessage = document.getElementById('error')
+
+
 async function fetchCountries() {
+
     try {
         // const response = await axios.get('https://restcountries.com/v3.1/all')
         const response = await axios.get('https://restcountries.com/v3.1/all?fields=name,flag,continents,population')
         response.data.sort((a, b) => a.population - b.population)
-
-        // console.log(response.data)
-        // console.log(response.data.length)
-        for (let i = 0; i < response.data.length; i++) {
-            let continent = response.data[i].continents[0]
-            // console.log(continent)
+        function colorPicker(continent) {
+            let regionColor = document.querySelector("#region-color")
             switch (continent) {
                 case 'North America':
-                    countryList.innerHTML += `
-        <li class="countryBox"><p class="country"><span>${response.data[i].flag} </span><span class="n-america"> ${response.data[i].name.common}</span></p>
-        <p class="population">Has a population of ${response.data[i].population} people</p></li>`
+                    regionColor.style.color = "#4C824B"
                     break;
                 case 'Africa':
-                    countryList.innerHTML += `
-        <li class="countryBox"><p class="country"><span>${response.data[i].flag} </span><span class="africa"> ${response.data[i].name.common}</span></p>
-        <p class="population">Has a population of ${response.data[i].population} people</p></li>`
+                    regionColor.style.color = "#4C824B"
                     break;
                 case 'South America':
-                    countryList.innerHTML += `
-        <li class="countryBox"><p class="country"><span>${response.data[i].flag} </span><span class="s-america"> ${response.data[i].name.common}</span></p>
-        <p class="population">Has a population of ${response.data[i].population} people</p></li>`
+                    regionColor.style.color = "#4C824B"
                     break;
                 case 'Oceania':
-                    countryList.innerHTML += `
-        <li class="countryBox"><p class="country"><span>${response.data[i].flag} </span><span class="oceania"> ${response.data[i].name.common}</span></p>
-        <p class="population">Has a population of ${response.data[i].population} people</p></li>`
+                    regionColor.style.color = "#4C824B"
                     break
                 case 'Europe':
-                    countryList.innerHTML += `
-        <li class="countryBox"><p class="country"><span>${response.data[i].flag} </span><span class="europe"> ${response.data[i].name.common}</span></p>
-        <p class="population">Has a population of ${response.data[i].population} people</p></li>`
+                    regionColor.style.color = "#4C824B"
                     break
                 case 'Asia':
-                    countryList.innerHTML += `
-        <li class="countryBox"><p class="country"><span>${response.data[i].flag} </span><span class="asia"> ${response.data[i].name.common}</span></p>
-        <p class="population">Has a population of ${response.data[i].population} people</p></li>`
+                    regionColor.style.color = "#4C824B"
                     break
                 default:
-                    countryList.innerHTML += `
-        <li class="countryBox"><p class="country"><span>${response.data[i].flag} </span><span class="default"> ${response.data[i].name.common}</span></p>
-        <p class="population">Has a population of ${response.data[i].population} people</p></li>`
+                    regionColor.style.color = "#4C824B"
             }
+        }
+        colorPicker(continent)
+        console.log(color)
+        console.log(response.data)
+        console.log(response.data.length)
+        for (let i = 0; i < response.data.length; i++) {
+            let continent = response.data[i].continents[0]
+            // let color = colorPicker(continent)
+            // console.log(color)
+
+            console.log(continent)
+            countryList.innerHTML += `
+        <li class="countryBox"><p class="country"><span>${response.data[i].flag} </span><span id="region-color"> ${response.data[i].name.common}</span></p>
+        <p class="population">Has a population of ${response.data[i].population} people</p></li>`
         }
     } catch (e) {
         console.log(e)
