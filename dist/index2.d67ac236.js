@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"53obS":[function(require,module,exports) {
+})({"gJWcK":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "b549c933ff378b12";
+module.bundle.HMR_BUNDLE_ID = "072be47ed67ac236";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -556,57 +556,73 @@ function hmrAccept(bundle, id) {
     });
 }
 
-},{}],"d21cg":[function(require,module,exports) {
+},{}],"alK4Z":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 async function fetchCountries() {
     try {
-        // const response = await axios.get('https://restcountries.com/v3.1/all')
-        const response = await (0, _axiosDefault.default).get("https://restcountries.com/v3.1/all?fields=name,flag,continents,population,region");
-        response.data.sort((a, b)=>a.population - b.population);
-        // console.log(response.data)
-        // console.log(response.data.length)
-        createListItems(response.data);
+        const result = await (0, _axiosDefault.default).get("https://restcountries.com/v2/all");
+        const countries = result.data;
+        // sorteer de huidige data array op de populatie-property van elk land
+        countries.sort((a, b)=>{
+            return a.population - b.population;
+        });
+        // geef de gesorteerde data array mee aan de functie die de elementen op de pagina injecteert
+        createListItems(countries);
     } catch (e) {
-        const errorMessage = document.getElementById("error");
-        console.log(e);
-        errorMessage.innerHTML += `
-        <p class="error">Foutcode: ${e.response.status}</p>`;
+        console.error(e);
     }
 }
 fetchCountries();
 function createListItems(countries) {
-    const countryList = document.getElementById("countries-list");
+    // sla de referentie op naar ons 'anker' element, de <ul> met id country-list
+    const countryList = document.getElementById("country-list");
+    // OPTIE 1
     countryList.innerHTML = countries.map((country)=>{
         return `
-      <li class="countryBox">
-        <p><span>${country.flag} </span>
-        <span class="${colorPicker(country.region)}">${country.name.common}</span></p>
+      <li>
+        <img src="${country.flag}" alt="Vlag van ${country.name}" class="flag" />
+        <span class="${getRegionClass(country.region)}">${country.name}</span>
         <p class="population">Has a population of ${country.population} people</p>
       </li>
     `;
     }).join("");
+// OPTIE 2 (dit had overigens ook gekunt met een for-loop!)
+// countries.map((country) => {
+//   // maak een li-element aan
+//   const countryElement = document.createElement('li');
+//
+//   // stop er een afbeelding, span en p in
+//   countryElement.innerHTML = `
+//     <img src="${country.flag}" alt="Vlag van ${country.name}" class="flag" />
+//     <span class="${getRegionClass(country.region)}">${country.name}</span>
+//     <p class="population">Has a population of ${country.population} people</p>
+//   `;
+//
+//   // voeg het list-element toe aan het ul-element
+//   countryList.appendChild(countryElement);
+// });
 }
-function colorPicker(continent) {
-    switch(continent){
-        case "North America":
-            return "n-america";
+// deze functie wordt voor elk land opnieuw aangeroepen en krijgt dan de region mee. Op basis daarvan
+// voert de switch zijn vergelijking uit, en geeft dan de naam van de class mee die wij op het element zetten.
+function getRegionClass(currentRegion) {
+    switch(currentRegion){
         case "Africa":
-            return "africa";
-        case "South America":
-            return "s-america";
-        case "Oceania":
-            return "oceania";
-        case "Europe":
-            return "europe";
+            return "blue";
+        case "Americas":
+            return "green";
         case "Asia":
-            return "asia";
+            return "red";
+        case "Europe":
+            return "yellow";
+        case "Oceania":
+            return "purple";
         default:
             return "default";
     }
 }
 
-},{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["53obS","d21cg"], "d21cg", "parcelRequirecb08")
+},{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["gJWcK","alK4Z"], "alK4Z", "parcelRequirecb08")
 
-//# sourceMappingURL=index.ff378b12.js.map
+//# sourceMappingURL=index2.d67ac236.js.map
