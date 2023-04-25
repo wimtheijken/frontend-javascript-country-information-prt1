@@ -30,6 +30,10 @@ a:visited {
   list-style-type: none;
 }
 
+li {
+  break-inside: avoid;
+}
+
 .world-map {
   width: 1000px;
 }

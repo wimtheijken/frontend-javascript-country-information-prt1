@@ -31,6 +31,10 @@ a:visited {
     padding: 30px;
 }
 
+li {
+    break-inside: avoid;
+}
+
 .world-map {
     width: 1000px;
 }
