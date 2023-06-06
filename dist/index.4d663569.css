@@ -1,0 +1,115 @@
+@import "https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Roboto:wght@300;400&display=swap";
+:root {
+  --n-america: #4c824b;
+  --s-america: #6ac486;
+  --europe: #ffd435;
+  --africa: #5575c1;
+  --asian: #d04e5b;
+  --ociania: #a652ba;
+  --default: #8c8c8c;
+  --background: #f9f9f9;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+h1 {
+  font-family: Gochi Hand, cursive;
+  font-size: 3rem;
+}
+
+a:link {
+  color: #000;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #000;
+}
+
+.container {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.image-container {
+  width: 80vw;
+}
+
+img {
+  width: 100%;
+}
+
+.countries {
+  width: 80vw;
+  min-height: 100px;
+  background-color: var(--background);
+  border: 2px solid #d3d3d3;
+  border-radius: 3px;
+  padding-top: 20px;
+}
+
+.countries-list {
+  height: 4300px;
+  flex-flow: column wrap;
+  gap: 10px;
+  margin-right: -30px;
+  display: flex;
+}
+
+.countryBox {
+  width: 33%;
+  height: 41px;
+}
+
+.country {
+  margin-top: -10px;
+}
+
+.population {
+  margin-top: -15px;
+  font-size: .7rem;
+}
+
+.flag {
+  width: 20px;
+  margin: 0 10px 0 0;
+  display: inline-block;
+}
+
+ul {
+  list-style: none;
+}
+
+.n-america {
+  color: var(--n-america);
+}
+
+.s-america {
+  color: var(--s-america);
+}
+
+.europe {
+  color: var(--europe);
+}
+
+.africa {
+  color: var(--africa);
+}
+
+.asia {
+  color: var(--asian);
+}
+
+.oceania {
+  color: var(--ociania);
+}
+
+.default {
+  color: var(--default);
+}
+
+/*# sourceMappingURL=index.4d663569.css.map */
